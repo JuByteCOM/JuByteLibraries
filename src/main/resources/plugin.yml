@@ -1,0 +1,6 @@
+name: JuByteLibraries
+version: $VERSION
+authors:
+  - JuByte
+  - Justin_SGD
+main: com.jubyte.libraries.JuByteLibraries
