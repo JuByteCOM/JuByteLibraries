@@ -3,11 +3,16 @@ package com.jubyte.libraries.database;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.InputStream;
-import java.lang.reflect.Method;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.Driver;
+import java.sql.DriverManager;
+import java.sql.DriverPropertyInfo;
+import java.sql.SQLException;
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.Properties;
 import java.util.logging.Level;
 
 /**
@@ -36,10 +41,15 @@ public final class H2Loader {
                 }
             }
 
-            URLClassLoader loader = (URLClassLoader) plugin.getClass().getClassLoader();
-            Method addURL = URLClassLoader.class.getDeclaredMethod("addURL", URL.class);
-            addURL.setAccessible(true);
-            addURL.invoke(loader, jarPath.toUri().toURL());
+            // Create a dedicated class loader for the H2 driver instead of
+            // manipulating the server's class loader which isn't allowed on
+            // newer Java versions.
+            URLClassLoader loader = new URLClassLoader(
+                    new URL[]{jarPath.toUri().toURL()},
+                    plugin.getClass().getClassLoader());
+            Class<?> driverClass = Class.forName("org.h2.Driver", true, loader);
+            Driver driver = (Driver) driverClass.getDeclaredConstructor().newInstance();
+            DriverManager.registerDriver(new DriverShim(driver));
         } catch (Exception e) {
             plugin.getLogger().log(Level.SEVERE, "Failed to load H2 database driver", e);
         }
@@ -55,5 +65,47 @@ public final class H2Loader {
             version = version.substring(0, dot);
         }
         return Integer.parseInt(version);
+    }
+    private static class DriverShim implements Driver {
+        private final Driver driver;
+
+        private DriverShim(Driver driver) {
+            this.driver = driver;
+        }
+
+        @Override
+        public java.sql.Connection connect(String url, Properties info) throws SQLException {
+            return driver.connect(url, info);
+        }
+
+        @Override
+        public boolean acceptsURL(String url) throws SQLException {
+            return driver.acceptsURL(url);
+        }
+
+        @Override
+        public DriverPropertyInfo[] getPropertyInfo(String url, Properties info) throws SQLException {
+            return driver.getPropertyInfo(url, info);
+        }
+
+        @Override
+        public int getMajorVersion() {
+            return driver.getMajorVersion();
+        }
+
+        @Override
+        public int getMinorVersion() {
+            return driver.getMinorVersion();
+        }
+
+        @Override
+        public boolean jdbcCompliant() {
+            return driver.jdbcCompliant();
+        }
+
+        @Override
+        public java.util.logging.Logger getParentLogger() throws SQLFeatureNotSupportedException {
+            return driver.getParentLogger();
+        }
     }
 }
