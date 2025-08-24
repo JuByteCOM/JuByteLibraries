@@ -1,5 +1,6 @@
 name: JuByteLibraries
 version: $VERSION
+description: 'Libraries for JuByte-Plugins.'
 authors:
   - JuByte
   - Justin_SGD

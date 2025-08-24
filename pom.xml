@@ -6,12 +6,13 @@
 
     <groupId>com.jubyte.libraries</groupId>
     <artifactId>JuByteLibraries</artifactId>
-    <version>1.1.0-SNAPSHOT</version>
+    <version>1.3.8-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
     </properties>
+
 
     <build>
         <plugins>
@@ -57,8 +58,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
@@ -102,7 +103,7 @@
     <distributionManagement>
         <repository>
             <id>jubyte</id>
-            <url>https://repo.jubyte.com/repository/jubyte</url>
+            <url>https://repo.jubyte.com/artifactory/jubyte</url>
         </repository>
     </distributionManagement>
 
@@ -115,7 +116,12 @@
         <!--Pretronic-->
         <repository>
             <id>pretronic</id>
-            <url>https://repo.jubyte.com/repository/pretronic/</url>
+            <url>https://repo.jubyte.com/artifactory/pretronic/</url>
+        </repository>
+        <!--JuByte-->
+        <repository>
+            <id>jubyte</id>
+            <url>https://repo.jubyte.com/artifactory/jubyte/</url>
         </repository>
     </repositories>
 
@@ -127,38 +133,44 @@
             <version>1.19-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
+        <!-- Jubyte -->
+        <dependency>
+            <groupId>com.jubyte.developerapi</groupId>
+            <artifactId>DeveloperAPI</artifactId>
+            <version>1.19.5</version>
+            <scope>compile</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <version>2.1.214</version>
+            <version>2.3.232</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
-            <version>3.0.7</version>
+            <version>3.1.4</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+        <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.30</version>
-            <scope>compile</scope>
+            <groupId>com.mysql</groupId>
+            <artifactId>mysql-connector-j</artifactId>
+            <version>9.4.0</version>
         </dependency>
         <!--Pretronic-Libraries-->
         <dependency>
             <groupId>net.pretronic.databasequery</groupId>
             <artifactId>pretronicdatabasequery-sql</artifactId>
-            <version>1.2.67.97-SNAPSHOT</version>
+            <version>1.2.67.98-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>net.pretronic.databasequery</groupId>
             <artifactId>pretronicdatabasequery-api</artifactId>
-            <version>1.2.67.97-SNAPSHOT</version>
+            <version>1.2.67.98-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
