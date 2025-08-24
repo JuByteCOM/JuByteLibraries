@@ -141,13 +141,6 @@
             <version>1.19.5</version>
             <scope>compile</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${h2.version}</version>
-            <scope>compile</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
@@ -201,17 +194,3 @@
         </dependency>
 
     </dependencies>
-
-    <profiles>
-        <profile>
-            <id>h2-legacy</id>
-            <activation>
-                <jdk>[1.8,11)</jdk>
-            </activation>
-            <properties>
-                <h2.version>1.4.200</h2.version>
-            </properties>
-        </profile>
-    </profiles>
-
-</project>
