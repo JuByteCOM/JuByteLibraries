@@ -3,6 +3,7 @@ package com.jubyte.libraries;
 import com.jubyte.developerapi.commands.AbstractCommand;
 import com.jubyte.developerapi.web.HasteServer;
 import com.jubyte.libraries.command.PasteCommand;
+import com.jubyte.libraries.database.H2Loader;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -21,6 +22,7 @@ public class JuByteLibraries extends JavaPlugin {
     public void onEnable() {
         this.juByteLibraries = this;
 
+        H2Loader.load(this);
         this.hasteServer = new HasteServer();
 
         this.loadCommands();
