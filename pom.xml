@@ -6,7 +6,7 @@
 
     <groupId>com.jubyte.libraries</groupId>
     <artifactId>JuByteLibraries</artifactId>
-    <version>1.3.8-SNAPSHOT</version>
+    <version>1.3.9-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -192,5 +192,6 @@
             <version>4.0.3</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
+
+</project>
