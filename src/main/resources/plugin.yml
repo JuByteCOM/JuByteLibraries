@@ -5,3 +5,5 @@ authors:
   - JuByte
   - Justin_SGD
 main: com.jubyte.libraries.JuByteLibraries
+libraries:
+  - com.h2database:h2:2.3.232
