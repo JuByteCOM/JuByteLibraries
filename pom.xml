@@ -6,7 +6,7 @@
 
     <groupId>com.jubyte.libraries</groupId>
     <artifactId>JuByteLibraries</artifactId>
-    <version>1.4.1-SNAPSHOT</version>
+    <version>1.4.5-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -127,6 +127,13 @@
     </repositories>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.44</version>
+            <scope>provided</scope>
+        </dependency>
         <!--Spigot-->
         <dependency>
             <groupId>org.spigotmc</groupId>
@@ -138,14 +145,14 @@
         <dependency>
             <groupId>com.jubyte.developerapi</groupId>
             <artifactId>DeveloperAPI</artifactId>
-            <version>1.19.5</version>
+            <version>1.19.9</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.mariadb.jdbc/mariadb-java-client -->
         <dependency>
             <groupId>org.mariadb.jdbc</groupId>
             <artifactId>mariadb-java-client</artifactId>
-            <version>3.1.4</version>
+            <version>3.5.8</version>
             <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.mysql/mysql-connector-j -->
